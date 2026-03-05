@@ -1,0 +1,12 @@
+build/
+node_modules/
+_env.ts
+env.ts
+.env
+.clasp.json
+npm-debug.log
+npm-debug.log.*
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
