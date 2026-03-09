@@ -44,3 +44,14 @@ function onFormSubmitTrigger(
     ErrorNotifier.notify(err, e);
   }
 }
+
+function onStorageMonitorTrigger(): void {
+  try {
+    StorageMonitor.checkCapacity();
+  } catch (error) {
+    const err = error as Error;
+    Logger.log(`[Storage Monitor Error]: ${err.message}`);
+
+    ErrorNotifier.notify(err, { context: "Daily Storage Monitor Trigger" });
+  }
+}

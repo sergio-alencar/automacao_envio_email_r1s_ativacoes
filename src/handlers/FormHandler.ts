@@ -19,6 +19,7 @@ class FormHandler {
       customerName: getValue(FORM_HEADERS.CUSTOMER_NAME),
       date: getValue(FORM_HEADERS.DATE),
       products: getValue(FORM_HEADERS.PRODUCT),
+      sourcePartner: getValue(FORM_HEADERS.SOURCE_PARTNER),
       taxRegime: getValue(FORM_HEADERS.TAX_REGIME),
       documents: getValue(FORM_HEADERS.DOCUMENTS),
     };
