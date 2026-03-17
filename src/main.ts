@@ -1,8 +1,4 @@
-// src\main.ts
-
-function onFormSubmitTrigger(
-  e: GoogleAppsScript.Events.SheetsOnFormSubmit,
-): void {
+function onFormSubmitTrigger(e: GoogleAppsScript.Events.SheetsOnFormSubmit): void {
   try {
     Logger.log("Starting form submission processing...");
 
@@ -14,24 +10,17 @@ function onFormSubmitTrigger(
 
     const submissionData = FormHandler.parseEvent(e);
 
-    const cleanedDoc = submissionData.customerDocument.replace(/\D/g, "");
+    Logger.log(`Attempting to fetch Razão Social for document: ${submissionData.customerDocument}`);
 
-    if (cleanedDoc.length === 14) {
+    const razaoSocial = CnpjService.getRazaoSocial(submissionData.customerDocument);
+
+    if (razaoSocial) {
+      Logger.log(`Razão Social found: ${razaoSocial}. Replacing original name.`);
+      submissionData.customerName = razaoSocial;
+    } else {
       Logger.log(
-        `CNPJ detected. Attempting to fetch Razão Social for: ${cleanedDoc}`,
+        `Could not fetch Razão Social or document is not a CNPJ. Using the name provided in the form.`,
       );
-      const razaoSocial = CnpjService.getRazaoSocial(cleanedDoc);
-
-      if (razaoSocial) {
-        Logger.log(
-          `Razão Social found: ${razaoSocial}. Replacing original name.`,
-        );
-        submissionData.customerName = razaoSocial;
-      } else {
-        Logger.log(
-          `Could not fetch Razão Social. Using the name provided in the form.`,
-        );
-      }
     }
 
     EmailService.sendNotification(submissionData);

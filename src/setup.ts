@@ -1,21 +1,26 @@
-// src\setup.ts
+const TRIGGER_SETTINGS = {
+  FUNCTION_NAME: "onStorageMonitorTrigger",
+  HOUR_OF_DAY: 8,
+  INTERVAL_DAYS: 1,
+};
 
 function setupDailyStorageMonitor(): void {
-  const functionName = "onStorageMonitorTrigger";
-
   const existingTriggers = ScriptApp.getProjectTriggers();
-  for (const trigger of existingTriggers) {
-    if (trigger.getHandlerFunction() === functionName) {
-      Logger.log(`The trigger for ${functionName} is already configured.`);
-      return;
-    }
+
+  const isAlreadyConfigured = existingTriggers.some(
+    (trigger) => trigger.getHandlerFunction() === TRIGGER_SETTINGS.FUNCTION_NAME,
+  );
+
+  if (isAlreadyConfigured) {
+    Logger.log(`The trigger for ${TRIGGER_SETTINGS.FUNCTION_NAME} is already configured.`);
+    return;
   }
 
-  ScriptApp.newTrigger(functionName)
+  ScriptApp.newTrigger(TRIGGER_SETTINGS.FUNCTION_NAME)
     .timeBased()
-    .atHour(8)
-    .everyDays(1)
+    .atHour(TRIGGER_SETTINGS.HOUR_OF_DAY)
+    .everyDays(TRIGGER_SETTINGS.INTERVAL_DAYS)
     .create();
 
-  Logger.log(`Successfully created daily trigger for: ${functionName}.`);
+  Logger.log(`Successfully created daily trigger for: ${TRIGGER_SETTINGS.FUNCTION_NAME}.`);
 }

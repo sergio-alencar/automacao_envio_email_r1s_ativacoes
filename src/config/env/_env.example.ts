@@ -1,8 +1,6 @@
-// src\_env.example.ts
-
 const ENV_EXAMPLE: EnvironmentConfig = {
   TARGET_EMAIL: "target_email@domain.com",
-  ADMIN_EMAILS: "admin_email@domain.com",
+  ADMIN_EMAILS: ["admin_email1@domain.com", "admin_email2@domain.com"],
   SPREADSHEET_ID: "spreadsheet_id",
 
   FORM_HEADERS: {
@@ -19,6 +17,6 @@ const ENV_EXAMPLE: EnvironmentConfig = {
   },
 
   DRIVE_FOLDER_ID: "folder_id",
-  STORAGE_LIMIT_BYTES: 1073741824, // 1 GB
+  STORAGE_LIMIT_BYTES: 1 * 1024 * 1024 * 1024,
   STORAGE_THRESHOLD_PERCENTAGE: 0.85,
 };

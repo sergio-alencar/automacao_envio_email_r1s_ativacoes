@@ -1,21 +1,6 @@
-// src\types.ts
-
-interface CustomerSubmission {
-  timestamp: string;
-  consultantName: string;
-  type: string;
-  customerDocument: string;
-  customerName: string;
-  date: string;
-  products: string;
-  sourcePartner: string;
-  taxRegime: string;
-  documents: string;
-}
-
 interface EnvironmentConfig {
   TARGET_EMAIL: string;
-  ADMIN_EMAILS: string;
+  ADMIN_EMAILS: string[];
   SPREADSHEET_ID: string;
 
   FORM_HEADERS: {

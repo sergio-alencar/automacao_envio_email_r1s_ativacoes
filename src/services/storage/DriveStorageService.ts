@@ -1,5 +1,3 @@
-// src\DriveStorageService.ts
-
 class DriveStorageService {
   static getFolderSizeBytes(folderId: string): number {
     const folder = DriveApp.getFolderById(folderId);
