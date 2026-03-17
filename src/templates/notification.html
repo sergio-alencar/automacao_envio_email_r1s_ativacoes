@@ -1,0 +1,81 @@
+<div style="font-family: Arial, sans-serif; padding: 10px">
+  <h2 style="color: <?= colors.BLACK_GREEN ?>; padding-bottom: 8px; margin-bottom: 20px">
+    Nova resposta ao formulário
+  </h2>
+
+  <table
+    style="border-collapse: collapse; width: 100%; max-width: 800px; font-family: Arial, sans-serif"
+  >
+    <? for (var i = 0; i < rows.length; i++) { ?>
+    <tr>
+      <th
+        style="
+          background-color: <?= colors.LIGHTER_GRAY ?>;
+          color: <?= colors.BLACK_GREEN ?>;
+          border: 1px solid <?= colors.DARK_GOLD ?>;
+          padding: 12px;
+          text-align: left;
+          width: 30%;
+          white-space: nowrap;
+          font-weight: bold;
+        "
+      >
+        <?= rows[i].label ?>
+      </th>
+      <td
+        style="
+          color: <?= colors.BLACK_GREEN ?>;
+          border: 1px solid <?= colors.DARK_GOLD ?>;
+          padding: 12px;
+          width: 70%;
+          line-height: 1.5;
+        "
+      >
+        <?!= rows[i].value ?>
+      </td>
+    </tr>
+    <? } ?>
+
+    <tr>
+      <th
+        style="
+          background-color: <?= colors.LIGHTER_GRAY ?>;
+          color: <?= colors.BLACK_GREEN ?>;
+          border: 1px solid <?= colors.DARK_GOLD ?>;
+          padding: 12px;
+          text-align: left;
+          width: 30%;
+          white-space: nowrap;
+          font-weight: bold;
+        "
+      >
+        Documentos
+      </th>
+      <td
+        style="
+          color: <?= colors.BLACK_GREEN ?>;
+          border: 1px solid <?= colors.DARK_GOLD ?>;
+          padding: 12px;
+          width: 70%;
+          line-height: 1.5;
+        "
+      >
+        <? if (documents.length === 0) { ?>
+        <i style="color: <?= colors.LIGHT_GRAY ?>">Nenhum documento anexado.</i>
+        <? } else { ?> <? for (var j = 0; j < documents.length; j++) { ?>
+        <a
+          href="<?= documents[j] ?>"
+          target="_blank"
+          style="color: <?= colors.DARK_GOLD ?>; font-weight: bold; text-decoration: none"
+          >📄 Acessar Documento <?= j + 1 ?></a
+        ><br /><br />
+        <? } ?> <? } ?>
+      </td>
+    </tr>
+  </table>
+
+  <br />
+  <p style="color: <?= colors.LIGHT_GRAY ?>; font-size: 12px; margin-top: 20px">
+    <i>E-mail gerado e enviado automaticamente pelo sistema. 🤖</i>
+  </p>
+</div>

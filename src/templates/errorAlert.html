@@ -1,0 +1,57 @@
+<div style="font-family: Arial, sans-serif; padding: 10px">
+  <h2 style="color: <?= colors.DARK_GOLD ?>; padding-bottom: 8px; margin-bottom: 20px">
+    Erro na Execução do Script
+  </h2>
+  <p style="color: <?= colors.BLACK_GREEN ?>; line-height: 1.5">
+    Ocorreu um erro inesperado durante o processamento de uma resposta do formulário.
+  </p>
+
+  <h3 style="color: <?= colors.BLACK_GREEN ?>; line-height: 1.5">Detalhes do Erro:</h3>
+  <pre
+    style="
+      font-size: 12px;
+      overflow-x: auto;
+      background-color: <?= colors.CODE_BG ?>;
+      padding: 10px;
+      border: 1px solid <?= colors.CODE_BORDER ?>;
+      border-radius: 4px;
+    "
+  >
+<?= errorMessage ?>
+  </pre>
+  <br />
+
+  <h3 style="color: <?= colors.BLACK_GREEN ?>; line-height: 1.5">Stack Trace (Rastreamento):</h3>
+  <pre
+    style="
+      font-size: 12px;
+      overflow-x: auto;
+      background-color: <?= colors.CODE_BG ?>;
+      padding: 10px;
+      border: 1px solid <?= colors.CODE_BORDER ?>;
+      border-radius: 4px;
+    "
+  >
+<?= stackTrace ?>
+  </pre>
+  <br />
+
+  <h3 style="color: <?= colors.BLACK_GREEN ?>; line-height: 1.5">Contexto do Evento (Payload):</h3>
+  <pre
+    style="
+      font-size: 12px;
+      overflow-x: auto;
+      background-color: <?= colors.CODE_BG ?>;
+      padding: 10px;
+      border: 1px solid <?= colors.CODE_BORDER ?>;
+      border-radius: 4px;
+    "
+  >
+<?= contextString ?>
+  </pre>
+
+  <br />
+  <p style="color: <?= colors.LIGHT_GRAY ?>; font-size: 12px; margin-top: 20px">
+    <i>E-mail de monitoramento do Google Apps Script. Enviado automaticamente. 🤖</i>
+  </p>
+</div>
